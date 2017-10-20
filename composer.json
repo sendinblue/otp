@@ -1,0 +1,31 @@
+{
+  "name": "sendinblue/otp",
+  "description": "Implementation of OATH algorithms",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "SendinBlue Developers",
+      "email": "contact@sendinblue.com",
+      "homepage": "https://www.sendinblue.com/"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.3",
+    "sendinblue/base-32": "^1"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2",
+    "phpunit/phpunit": "^5"
+  },
+  "autoload": {
+    "psr-4": {
+      "SendinBlue\\Otp\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SendinBlue\\Tests\\": "tests/"
+    }
+  }
+}
