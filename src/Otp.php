@@ -54,7 +54,12 @@ abstract class Otp
      *
      * @throws InvalidCodeException
      */
-    abstract public function check($code);
+    public function check($code)
+    {
+        if (!hash_equals($this->generate(), $code)) {
+            throw new InvalidCodeException();
+        }
+    }
 
     /**
      * @param string $input
@@ -64,6 +69,11 @@ abstract class Otp
     protected function hmac($input)
     {
         $hs = hash_hmac($this->hmacAlgorithm, $input, $this->secret, true);
+
+        if (!$this->outputLength) {
+            return $hs;
+        }
+
         $offset = ord(substr($hs, -1)) & 0xF;
         $sNum = unpack('N*', substr($hs, $offset, 4))[1] & 0x7FFFFFFF;
 
