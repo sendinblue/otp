@@ -42,7 +42,7 @@ class Totp extends Otp
      */
     public function getCurrentTimeStep()
     {
-        return (int) floor((time() - $this->timeReference) / $this->timeStep);
+        return (int) ((time() - $this->timeReference) / $this->timeStep);
     }
 
     /**
