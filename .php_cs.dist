@@ -13,5 +13,6 @@ return \PhpCsFixer\Config::create()
         '@Symfony' => true,
         '@Symfony:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'strict_param' => true,
     ])
 ;
