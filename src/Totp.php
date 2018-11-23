@@ -23,7 +23,7 @@ class Totp extends Otp
      */
     public function __construct($secret, $outputLength = 6, $hmacAlgorithm = 'sha1', $timeStep = 30, $timeReference = 0)
     {
-        if (!in_array($hmacAlgorithm, self::ALLOWED_HMAC_ALGORITHMS)) {
+        if (!\in_array($hmacAlgorithm, self::ALLOWED_HMAC_ALGORITHMS)) {
             throw new \DomainException(sprintf('Algorithm must be one of %s', implode(', ', self::ALLOWED_HMAC_ALGORITHMS)));
         }
 

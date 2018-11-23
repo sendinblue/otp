@@ -23,7 +23,7 @@ abstract class Otp
      */
     public function __construct($hmacAlgorithm, $secret, $outputLength)
     {
-        if (strlen($secret) < 20) {
+        if (\strlen($secret) < 20) {
             throw new \DomainException('Secret must be at least 20 bytes long.');
         }
 
@@ -64,7 +64,7 @@ abstract class Otp
     protected function hmac($input)
     {
         $hs = hash_hmac($this->hmacAlgorithm, $input, $this->secret, true);
-        $offset = ord(substr($hs, -1)) & 0xF;
+        $offset = \ord(substr($hs, -1)) & 0xF;
         $sNum = unpack('N*', substr($hs, $offset, 4))[1] & 0x7FFFFFFF;
 
         return str_pad($sNum % 10 ** $this->outputLength, $this->outputLength, '0', STR_PAD_LEFT);

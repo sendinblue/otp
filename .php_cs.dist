@@ -8,7 +8,10 @@ return \PhpCsFixer\Config::create()
             ->in('.')
             ->exclude('vendor')
     )
+    ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
+        '@Symfony:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
-    ]);
+    ])
+;
